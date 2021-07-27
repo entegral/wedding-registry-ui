@@ -43,6 +43,7 @@ function Login({setUser, setSignUp, email, password, setEmail, setPassword}) {
             className={classes.margin}
             id="standard-password-input"
             label="Password"
+            type="password"
             onChange={(e) => setPassword(e.target.value)}
           />
         </form>

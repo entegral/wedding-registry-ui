@@ -1,4 +1,4 @@
-import { Button, Container, makeStyles, Paper } from "@material-ui/core";
+import { Button, Container, makeStyles, Paper, Typography } from "@material-ui/core";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -17,10 +17,46 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function LoggedIn({user, logout}) {
+function DisplayQuestions({questions}) {
   const classes = useStyles();
+  const responses = questions.map((question, index) => {
+    return (
+      <div key={index}>
+        <Typography
+          align="left"
+          variant="body1"
+          >
+          {question.question}
+        </Typography>
+        <Typography
+        align="left"
+        paragraph={true}
+        variant="body1"
+        >
+          {question.answer.toString()}
+        </Typography>
+      </div>
+    )
+  })
   return (
-      <Container maxWidth="sm">
+    <Paper className={classes.paper} elevation={3}>
+      <Typography
+        align="center"
+        paragraph={true}
+        variant="h4"
+      >
+        Registry Questions
+      </Typography>
+      {responses}
+    </Paper>
+  )
+}
+
+function LoggedIn({user, questions, logout}) {
+  const classes = useStyles();
+  console.log(questions)
+  return (
+    <Container maxWidth="md">
       <Paper className={classes.paper} elevation={3}>
         <Button 
           variant="contained"
@@ -33,7 +69,10 @@ function LoggedIn({user, logout}) {
           logged in as {user.name} using {user.email} with password: {user.password}
         </p>
       </Paper>
-      </Container>
+      {
+        questions && Array.isArray(questions) ? <DisplayQuestions questions={questions}/> : null
+      }
+    </Container>
   )
 }
 

@@ -30,6 +30,7 @@ async function postToGraphql(email, password, firstname, lastname) {
 
 async function signUpUser(email, password, firstname, lastname, setUser) {
   const user = await postToGraphql(email, password, firstname, lastname)
+  console.log(user)
   setUser(user)
 }
 
@@ -60,6 +61,7 @@ function SignUp({email, password, setEmail, setPassword, setUser, setSignUp}) {
             className={classes.margin}
             defaultValue={password}
             id="standard-password-input"
+            type="password"
             label="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
