@@ -8,8 +8,8 @@ function logout(setUser) {
 }
 
 function App() {
-
   const [user, setUser] = useState(null)
+
   if (!user) {
     return (
      <LoggedOut setUser={setUser} />

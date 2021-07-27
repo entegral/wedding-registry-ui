@@ -1,5 +1,6 @@
 import { Button, Container, makeStyles, Paper, TextField } from "@material-ui/core";
 import { useState } from "react";
+import SignUp from "./SignUp";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,14 +26,11 @@ function login(email, password, setUser) {
   })
 }
 
-function LoggedOut({setUser}) {
+function Login({setUser, setSignUp, email, password, setEmail, setPassword}) {
   const classes = useStyles();
-  const [email, setEmail] = useState(null)
-  const [password, setPassword] = useState(null)
-
+  
   return (
-    <Container maxWidth="sm">
-      <Paper className={classes.paper} elevation={3}>
+    <Paper className={classes.paper} elevation={3}>
         
         <form>
           <TextField
@@ -56,9 +54,50 @@ function LoggedOut({setUser}) {
         >
           Login
         </Button>
+        <Button 
+          className={classes.margin}
+          variant="contained"
+          color="primary"
+          onClick={() => setSignUp(true)}
+        >
+          Sign Up
+        </Button>
       </Paper>
-     </Container>
   )
+}
+
+function LoggedOut({setUser}) {
+  const [signUp, setSignUp] = useState(false)
+  
+  const [email, setEmail] = useState(null)
+  const [password, setPassword] = useState(null)
+  if (signUp) {
+    return (
+      <Container maxWidth="sm">
+        <SignUp 
+          email={email}
+          password={password}
+          setEmail={setEmail}
+          setPassword={setPassword}
+          setUser={setUser}
+          setSignUp={setSignUp}
+        />
+      </Container>
+    )
+  } else {
+    return (
+      <Container maxWidth="sm">
+        <Login
+          email={email}
+          password={password}
+          setEmail={setEmail}
+          setPassword={setPassword}
+          setUser={setUser}
+          setSignUp={setSignUp}
+        />
+       </Container>
+    )
+  }
 }
 
 export default LoggedOut
