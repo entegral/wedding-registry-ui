@@ -1,4 +1,4 @@
-import { Button, Container, makeStyles, Paper } from "@material-ui/core";
+import { Button, Container, makeStyles, Paper, Typography } from "@material-ui/core";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -30,9 +30,9 @@ function Authenticated({user, AppEntryPoint, logout}) {
         >
           Logout
         </Button>
-        <p>
+        <Typography className={classes.margin}>
           logged in as {user.name} using {user.email} with password: {user.password}
-        </p>
+        </Typography>
       </Paper>
       {
         AppEntryPoint ? <AppEntryPoint user={user}/> : null
