@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import Authenticated from './Authenticated';
-import FetchQuestions from './FetchQuestions';
 import Unauthenticated from './Unauthenticated';
 
 function logout(setUser) {
   setUser(null)
 }
 
-function LoginManager() {
+function LoginManager({AppEntryPoint}) {
   const [user, setUser] = useState(null)
  
 
@@ -19,7 +18,7 @@ function LoginManager() {
   return (
     <Authenticated 
       user={user}
-      AppEntryPoint={FetchQuestions}
+      AppEntryPoint={AppEntryPoint}
       logout={logout.bind(null, setUser)}
     />
    );

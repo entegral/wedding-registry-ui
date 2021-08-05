@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import LoginManager from './LoginManager';
+import LoginManager from './LoginManager/LoginManager';
+import FetchQuestions from './Questions/FetchQuestions';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <LoginManager />
+    <LoginManager 
+      AppEntryPoint={FetchQuestions}
+    />
   </React.StrictMode>,
   document.getElementById('root')
 );
