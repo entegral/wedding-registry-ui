@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-function DisplayQuestions({questions  = []}) {
+function DisplayQuestions({questions = []}) {
   const classes = useStyles();
   console.log('[DisplayQuestions] questions:', questions)
 

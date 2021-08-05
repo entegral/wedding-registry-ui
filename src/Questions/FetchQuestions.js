@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
 import DisplayQuestions from "./DisplayQuestions"
 
-function FetchQuestions() {
+function FetchQuestions({user}) {
   const [questions, setQuestions] = useState([])
 
   useEffect(() => {
-    async function getQuestions() {
+    async function getQuestions(user) {
+      // issue graphql query to fetch user's questions
       setQuestions([
         {
           question: "Are you attending?",
@@ -18,7 +19,7 @@ function FetchQuestions() {
       ])
     }
     getQuestions()
-  }, [])
+  }, [user])
 
   return <DisplayQuestions questions={questions}/>
 }
