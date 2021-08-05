@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function LoggedIn({user, AppEntryPoint, logout}) {
+function Authenticated({user, AppEntryPoint, logout}) {
   const classes = useStyles();
   return (
     <Container maxWidth="md">
@@ -41,4 +41,4 @@ function LoggedIn({user, AppEntryPoint, logout}) {
   )
 }
 
-export default LoggedIn
+export default Authenticated

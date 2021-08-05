@@ -67,7 +67,7 @@ function Login({setUser, setSignUp, email, password, setEmail, setPassword}) {
   )
 }
 
-function LoggedOut({setUser}) {
+function Unauthenticated({setUser}) {
   const [signUp, setSignUp] = useState(false)
   
   const [email, setEmail] = useState(null)
@@ -101,4 +101,4 @@ function LoggedOut({setUser}) {
   }
 }
 
-export default LoggedOut
+export default Unauthenticated
